@@ -1,0 +1,322 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.open {
+  display: flex !important ;
+}
+header {
+  align-items: center;
+  justify-content: space-between;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #fff; /* Set the background color as needed */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for a subtle effect */
+}
+
+.burger {
+  display: none;
+  float: right;
+  margin-right: 5%;
+  margin-top: 20px;
+  position: relative;
+  z-index: 50;
+  align-items: center;
+  justify-content: flex-end;
+  width: 30px;
+  height: 18px;
+}
+.burger::before,
+.burger::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background-color: black;
+  transition: all 0.3s ease 0s;
+}
+.burger span {
+  height: 2px;
+  width: 100%;
+  transform: scale(1);
+  background-color: black;
+}
+
+.burger::before {
+  top: 0;
+}
+
+.burger::after {
+  bottom: 0;
+}
+
+/* Добавляем класс active для анимации иконки бургера */
+.burger.active span {
+  transform: scale(0);
+}
+
+.burger.active::before {
+  top: 50%;
+  transform: rotate(-45deg) translate(0, -50%);
+}
+
+.burger.active::after {
+  bottom: 50%;
+  transform: rotate(45deg) translate(0, 50%);
+}
+
+/* Задаем минимальный размер для изображения логотипа */
+.logo {
+  max-width: 320px; /* Максимальная ширина логотипа */
+  height: auto; /* Сохраняем пропорции */
+  float: left;
+  margin-left: 5%; /* Отступ слева от логотипа */
+}
+
+.navbar {
+  float: right;
+  font-family: "Mont";
+  font-weight: 500;
+  font-size: larger;
+  color: black;
+  text-decoration: none;
+  margin-right: 5%;
+  margin-top: 20px;
+}
+.navbar a {
+  text-decoration: none;
+  color: inherit;
+  vertical-align: middle; /* Выравнивание элементов по вертикали */
+}
+
+.navbar a:not(:last-child)::after {
+  display: flex;
+  content: "|"; /* Add the separator content */
+  margin-left: 10px; /* Adjust the space between link and separator */
+  color: black; /* Color of the separator */
+  display: inline-block; /* Make sure the separator is inline with the text */
+  vertical-align: middle; /* Выравнивание элементов по вертикали */
+}
+
+.navbar a:hover {
+  font-weight: bold;
+}
+
+.navbar a:hover::after {
+  font-weight: 500; /* To ensure the separator doesn't get bold on hover */
+}
+
+.num-icon {
+  max-width: 20px; /* Максимальная ширина логотипа */
+  height: auto; /* Сохраняем пропорции */
+  vertical-align: middle; /* Выравнивание элементов по вертикали */
+}
+@media (max-width: 1040px) {
+  .navbar a:nth-child(1),
+  .navbar a:nth-child(2),
+  .navbar a:nth-child(3) {
+    display: none; /* Скрываем первый, второй и третий элементы в мобильной версии */
+  }
+}
+@media (max-width: 768px) {
+  .navbar {
+    width: 100%; /* Занимаем всю доступную ширину */
+    float: left;
+    margin-left: 5%;
+
+    display: none;
+    flex-direction: column;
+    align-items: left;
+    margin-bottom: 20px; /* Увеличиваем отступы между элементами */
+    font-size: 24px;
+  }
+  .navbar a:not(:last-child)::after {
+    content: none; /* Убираем разделитель для мобильной версии */
+    margin-left: 0; /* Убираем отступ разделителя для мобильной версии */
+  }
+  .navbar a:nth-child(1),
+  .navbar a:nth-child(2),
+  .navbar a:nth-child(3) {
+    display: none; /* Скрываем первый, второй и третий элементы в мобильной версии */
+  }
+  .logo {
+    width: 290px; /* Максимальная ширина логотипа */
+    height: auto; /* Сохраняем пропорции */
+    margin-left: 5%; /* Отступ слева от логотипа */
+  }
+
+  .burger {
+    display: flex;
+  }
+}
+
+main {
+  width: 100%; /* Ширина main будет 100% от родительского контейнера */
+}
+.fst img {
+  width: 100%;
+  height: auto;
+  display: block; /* Ensures the image doesn't have any extra space below it */
+  margin: auto; /* Remove any default margin */
+  padding: auto; /* Remove any default padding */
+}
+
+.scd h1 {
+  font-family: "Mont";
+  font-weight: 400;
+  display: inline-block;
+  background-color: white;
+  padding: 0 20px;
+  position: relative;
+}
+
+.scd {
+  width: 100%;
+  overflow: hidden;
+  text-align: center; /* Центрируем текст */
+  position: relative; /* Устанавливаем позицию относительно родительского элемента */
+}
+
+.scd h1:before,
+.scd h1:after {
+  content: "";
+
+  /* делаем линию строчно-блочной */
+  display: inline-block;
+
+  /* выравниваем вертикально по середине */
+  vertical-align: middle;
+
+  /* не позволяем ширине превысить 100% (будет добавлен бордюр) */
+  box-sizing: border-box;
+
+  /* установка ширины в 100% делает линию равной ширине тега заголовка
+	** благодаря этому линия заполнит все свободное пространство
+	** слева и справа от текста
+	*/
+  width: 100%;
+  height: 1px;
+  background: black;
+
+  /* добавляем к линии левый и правый бордюр цветом основного фона заголовка
+	** благодаря этому создается нужный отступ между линиями и текстом
+	*/
+  border: solid #fff;
+  border-width: 0 10px;
+}
+.scd h1:before {
+  /* смещаем левую линию влево отрицательным отступом, равным 100% ширины
+	** благодаря этому линия встает слева от текста
+	*/
+  margin-left: -100%;
+}
+.scd h1:after {
+  /* смещаем правую линию вправо отрицательным отступом, равным 100% ширины
+	** благодаря этому линия встает справа от текста
+	*/
+  margin-right: -100%;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  text-align: center; /* Center the text within the container */
+}
+
+.scdm {
+  margin-right: 90px; /* Change the value to your desired spacing */
+}
+
+.overlay-text {
+  font-family: "Mont";
+  font-weight: bolder;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #0a1947; /* Text color */
+  font-size: 16px; /* Font size */
+  white-space: nowrap; /* Prevent text from wrapping to the next line */
+  /* Other styles, if needed */
+}
+.map {
+  width: 100%;
+  position: relative;
+}
+
+.map iframe {
+  width: 100%;
+  height: 350px; /* Высоту можно настроить по вашему усмотрению */
+  border: none;
+  margin-bottom: -20px;
+}
+footer {
+  background-origin: content-box;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.footer-table {
+  display: flex;
+  justify-content: space-around;
+  font-family: "Mont";
+  color: white;
+  font-size: larger;
+  padding: 20px 0; /* Уменьшим верхний и нижний внутренний отступ для плотности */
+}
+
+.contacts,
+.navigation {
+  padding-top: 20px;
+  font-size: medium;
+  color: white;
+  margin: 0; /* Уменьшим внешний отступ у ячеек */
+}
+
+.social-icons {
+  display: flex;
+  gap: 5px; /* Уменьшим расстояние между иконками соцсетей */
+}
+
+/* Стили для ссылок */
+.navigation a {
+  text-decoration: none;
+  color: white;
+}
+
+.navigation a:hover {
+  text-decoration: underline;
+}
+
+.footer2 {
+  height: 70px;
+  width: 100%;
+  background-color: #050b20;
+  display: flex;
+  align-items: center;
+}
+
+.image-container-footer {
+  height: 60px;
+  width: 60px;
+  margin-left: 2%;
+  vertical-align: middle;
+}
+
+.text-container {
+  font-family: "Mont";
+  color: white;
+  text-align: left;
+  font-size: 16px;
+}
+@media (max-width: 768px) {
+  .text-container {
+    font-family: "Mont";
+    color: white;
+    text-align: left;
+    font-size: 10px;
+  }
+}
